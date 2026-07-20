@@ -13,7 +13,7 @@ A complete Persian language mod for the Steam version of Cookie Clicker.
 ## Installation
 
 Install from steam workshop:
-https://steamcommunity.com/sharedfiles/filedetails/?id=3768204281
+https://steamcommunity.com/sharedfiles/filedetails/?id=3768250958
 
 OR
 

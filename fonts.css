@@ -92,7 +92,7 @@ html[lang="fa"] body *,
 html[lang="fa"] body *::before,
 html[lang="fa"] body *::after {
 	font-family: 'IRANSansX', Tahoma, Arial, sans-serif !important;
-	line-height: 1.16;
+	line-height: 1.17;
 }
 
 html[lang="fa"] #menu,

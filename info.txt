@@ -1,15 +1,15 @@
 {
-  "Name": "فارسی‌ساز Cookie Clicker",
-  "ID": "CookieClickerFA",
+  "Name": "Persian translation and font",
+  "ID": "CookiePersianTranslationMod",
   "Author": "Mehdi Motamedi",
-  "Description": "آدرس وبسایت: mehdi-motamedi.ir ترجمهٔ فارسی برای نسخهٔ 2.053؛ شامل همهٔ ۳۰۶۷ کلید اصلی، خبرها یا متن افزوده، رابط راست‌به‌چپ و ترجمهٔ بازبینی‌شدهٔ فروشگاه و مینی‌گیم‌ها.",
-  "ModVersion": 2026072003,
+  "Description": "Persian translation for version 2.053; includes all 3067 main keys, added news or text, right-to-left interface, and revised translation of the store and minigames.",
+  "ModVersion": 20260720.04,
   "GameVersion": 2.053,
-  "Date": "07/20/2026",
+  "Date": "20/07/2026",
   "Dependencies": [],
   "LanguagePacks": [
     "lang.js"
   ],
-  "AllowSteamAchievs": true,
+  "AllowSteamAchievs": 1,
   "Disabled": 0
 }

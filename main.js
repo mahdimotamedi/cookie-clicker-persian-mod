@@ -1,6 +1,7 @@
 (function () {
   'use strict';
-  const MOD_ID = 'CookieClickerFA';
+
+  const MOD_ID = 'CookiePersianTranslationMod';
   const LANGUAGE_SLOT = 'ZH-CN';
 
   const IRANIAN_GRANDMA_NAMES = [
@@ -14,6 +15,7 @@
 
   function registerPersianLanguageSlot() {
     if (typeof Langs === 'undefined') return;
+
     Langs[LANGUAGE_SLOT] = {
       file: LANGUAGE_SLOT,
       nameEN: 'Persian',
@@ -25,18 +27,20 @@
   }
 
   function addStyles(mod) {
-    if (!document.getElementById('cookie-clicker-fa-css')) {
-      const link = document.createElement('link');
-      link.id = 'cookie-clicker-fa-css';
-      link.rel = 'stylesheet';
-      link.type = 'text/css';
-      link.href = mod.dirURI + '/fonts.css';
-      document.head.appendChild(link);
-    }
+    if (document.getElementById('cookie-clicker-fa-css')) return;
+
+    const link = document.createElement('link');
+    link.id = 'cookie-clicker-fa-css';
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = mod.dirURI + '/fonts.css';
+
+    document.head.appendChild(link);
   }
 
   function applyPersianLayout() {
     document.documentElement.lang = 'fa';
+
     if (document.body) {
       document.body.lang = 'fa';
     }
@@ -44,45 +48,89 @@
 
   function applyIranianGrandmaNames() {
     if (typeof Game === 'undefined') return;
+
     Game.grandmaNames = IRANIAN_GRANDMA_NAMES.slice();
     Game.customGrandmaNames = [];
+  }
+
+  function selectPersianLanguageSafely() {
+    if (
+      typeof localStorageGet !== 'function' ||
+      typeof localStorageSet !== 'function'
+    ) {
+      return false;
+    }
+
+    if (localStorageGet('CookieClickerLang') === LANGUAGE_SLOT) {
+      return false;
+    }
+
+    localStorageSet('CookieClickerLang', LANGUAGE_SLOT);
+
+    if (localStorageGet('CookieClickerLang') !== LANGUAGE_SLOT) {
+      console.error(
+        '[' + MOD_ID + '] Could not save the Persian language preference.'
+      );
+      return false;
+    }
+
+    Game.toReload = true;
+    return true;
   }
 
   registerPersianLanguageSlot();
 
   Game.registerMod(MOD_ID, {
     init: function () {
-      this.dirURI = this.dir ? 'file:///' + encodeURI(this.dir.replace(/\\/g, '/')) : 'CookieClickerFAMod';
+      this.dirURI = this.dir
+        ? 'file:///' + encodeURI(this.dir.replace(/\\/g, '/'))
+        : 'CookiePersianTranslationMod';
+
       registerPersianLanguageSlot();
       addStyles(this);
       applyIranianGrandmaNames();
 
-      if (localStorageGet('CookieClickerLang') !== LANGUAGE_SLOT) {
-        localStorageSet('CookieClickerLang', LANGUAGE_SLOT);
-        Game.toSave = true;
-        Game.toReload = true;
+      if (selectPersianLanguageSafely()) {
         return;
       }
 
       applyPersianLayout();
 
-      if (localStorageGet('CookieClickerLang') === LANGUAGE_SLOT) applyPersianLayout();
-
       let grandmaNameRefresh = 0;
+
       Game.registerHook('draw', function () {
         registerPersianLanguageSlot();
-        if (localStorageGet('CookieClickerLang') === LANGUAGE_SLOT) applyPersianLayout();
+
+        if (localStorageGet('CookieClickerLang') === LANGUAGE_SLOT) {
+          applyPersianLayout();
+        }
       });
+
       Game.registerHook('logic', function () {
-        if (++grandmaNameRefresh >= 150) {
+        grandmaNameRefresh++;
+
+        if (grandmaNameRefresh >= 150) {
           grandmaNameRefresh = 0;
           applyIranianGrandmaNames();
         }
       });
 
-      Game.Notify('فارسی‌ساز فعال شد', 'بسی رنج بردم در این سال سی / عجم زنده کردم بدین پارسی', [16, 5], 6);
+      Game.registerHook('reincarnate', function () {
+        applyIranianGrandmaNames();
+      });
+
+      Game.Notify(
+        'فارسی‌ساز فعال شد',
+        'بسی رنج بردم در این سال سی / عجم زنده کردم بدین پارسی',
+        [16, 5],
+        6
+      );
     },
-    save: function () { return ''; },
+
+    save: function () {
+      return '';
+    },
+
     load: function () { }
   });
 })();
