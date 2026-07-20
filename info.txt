@@ -1,15 +1,16 @@
 {
-  "Name": "Persian translation and font",
-  "ID": "CookiePersianTranslationMod",
-  "Author": "Mehdi Motamedi",
-  "Description": "Persian translation for version 2.053; includes all 3067 main keys, added news or text, right-to-left interface, and revised translation of the store and minigames.",
-  "ModVersion": 20260720.04,
-  "GameVersion": 2.053,
-  "Date": "20/07/2026",
-  "Dependencies": [],
-  "LanguagePacks": [
-    "lang.js"
-  ],
-  "AllowSteamAchievs": 1,
-  "Disabled": 0
+ "Name": "Persian translation and font",
+ "ID": "CookiePersianTranslationMod",
+ "Author": "Mehdi Motamedi",
+ "Description": "Persian translation for version 2.053; includes all 3067 main keys, added news or text, right-to-left interface, and revised translation of the store and minigames.",
+ "ModVersion": 20260720.05,
+ "GameVersion": 2.053,
+ "Date": "20/07/2026",
+ "Dependencies": [],
+ "LanguagePacks": [
+  "lang.js"
+ ],
+ "AllowSteamAchievs": 1,
+ "Disabled": 0,
+ "Workshop": "3768250958"
 }
