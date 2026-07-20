@@ -1,11 +1,11 @@
 {
-  "Name": "فارسی‌ساز بازبینی‌شدهٔ Cookie Clicker",
+  "Name": "فارسی‌ساز Cookie Clicker",
   "ID": "CookieClickerFA",
-  "Author": "Persian adaptation",
-  "Description": "ترجمهٔ فارسی هم‌تراز با EN.js برای نسخهٔ 2.053؛ شامل همهٔ ۳۰۶۷ کلید اصلی، خبرهای خط‌به‌خط بدون خلاصه‌سازی یا متن افزوده، رابط راست‌به‌چپ و ترجمهٔ بازبینی‌شدهٔ فروشگاه و مینی‌گیم‌ها.",
+  "Author": "Mehdi Motamedi",
+  "Description": "آدرس وبسایت: mehdi-motamedi.ir ترجمهٔ فارسی برای نسخهٔ 2.053؛ شامل همهٔ ۳۰۶۷ کلید اصلی، خبرها یا متن افزوده، رابط راست‌به‌چپ و ترجمهٔ بازبینی‌شدهٔ فروشگاه و مینی‌گیم‌ها.",
   "ModVersion": 2026072003,
   "GameVersion": 2.053,
-  "Date": "20/07/2026",
+  "Date": "07/20/2026",
   "Dependencies": [],
   "LanguagePacks": [
     "lang.js"

@@ -86,17 +86,13 @@
 		url('fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
 }
 
-/* html[lang="fa"],
-html[lang="fa"] body {
-	direction: rtl;
-} */
-
 html[lang="fa"],
 html[lang="fa"] body,
 html[lang="fa"] body *,
 html[lang="fa"] body *::before,
 html[lang="fa"] body *::after {
 	font-family: 'IRANSansX', Tahoma, Arial, sans-serif !important;
+	line-height: 1.16;
 }
 
 html[lang="fa"] #menu,
@@ -106,7 +102,6 @@ html[lang="fa"] .prompt,
 html[lang="fa"] .crate,
 html[lang="fa"] .listing {
 	direction: rtl;
-	text-align: right;
 }
 
 html[lang="fa"] #store,
@@ -119,4 +114,10 @@ html[lang="fa"] .owned,
 html[lang="fa"] .monospace {
 	direction: rtl;
 	unicode-bidi: isolate;
+}
+
+html[lang="fa"] .price {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
 }

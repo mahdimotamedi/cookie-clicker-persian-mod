@@ -9,7 +9,7 @@ ModLanguage('ZH-CN',{
   "grandmapocalypse": "آخرالزمان مادربزرگ‌ها",
   "%1 cookie": [
     "%1 کوکی",
-    "%1 کوکی‌ها"
+    "%1 کوکی‌"
   ],
   "%1 sugar lump": [
     "%1 قندانه",
@@ -21,15 +21,15 @@ ModLanguage('ZH-CN',{
   ],
   "%1 golden cookie": [
     "%1 کوکی طلایی",
-    "%1 کوکی‌های طلایی"
+    "%1 کوکی‌ طلایی"
   ],
   "%1 building": [
     "%1 ساختمان",
-    "%1 ساختمان‌ها"
+    "%1 ساختمان‌"
   ],
   "%1 upgrade": [
     "%1 ارتقا",
-    "%1 ارتقاها"
+    "%1 ارتقا"
   ],
   "Yes": "بله",
   "No": "خیر",
@@ -53,7 +53,7 @@ ModLanguage('ZH-CN',{
   "Ctrl": "کنترل",
   "Ctrl-click": "کنترل و کلیک",
   "Esc": "گریز",
-  "Cookies": "کوکی‌ها",
+  "Cookies": "کوکی",
   "%1 day": [
     "%1 روز",
     "%1 روز"
@@ -346,7 +346,7 @@ ModLanguage('ZH-CN',{
   "%1's bakery": "نانوایی %1",
   "Name your bakery": "نام‌گذاری نانوایی",
   "What should your bakery's name be?": "نام نانوایی شما چه باشد؟",
-  "bakery random name, 1st half": [
+  "bakery random name, 2nd half": [
     "جادویی",
     "خارق‌العاده",
     "شیک",
@@ -416,7 +416,7 @@ ModLanguage('ZH-CN',{
     "اِل",
     "فون"
   ],
-  "bakery random name, 2nd half": [
+  "bakery random name, 1st half": [
     "کوکی",
     "بیسکویت",
     "مافین",
@@ -3494,3 +3494,56 @@ ModLanguage('ZH-CN',{
   "[Achievement name 641]All on deck": "همه روی عرشه",
   "[Achievement name 642]A round of applause": "یک دور تشویق"
 });
+
+(function () {
+  if (typeof formatLong === 'undefined') return;
+
+  var faBaseSuffixes = [
+    ' هزار',
+    ' میلیون',
+    ' میلیارد',
+    ' تریلیون',
+    ' کوادریلیون',
+    ' کوینتیلیون',
+    ' سکستیلیون',
+    ' سپتیلیون',
+    ' اکتیلیون',
+    ' نونیلیون'
+  ];
+
+  var faPrefixes = [
+    '', 'آن', 'دو', 'تره', 'کواتور',
+    'کوین', 'سکس', 'سپتن', 'اکتو', 'نووم'
+  ];
+
+  var faLargeSuffixes = [
+    'دسیلیون',
+    'ویجینتیلیون',
+    'تریجینتیلیون',
+    'کوادراجینتیلیون',
+    'کوینکواجینتیلیون',
+    'سکساجینتیلیون',
+    'سپتواجینتیلیون',
+    'اکتوجینتیلیون',
+    'نوناجینتیلیون'
+  ];
+
+  var i;
+
+  for (i = 0; i < faBaseSuffixes.length && i < formatLong.length; i++) {
+    formatLong[i] = faBaseSuffixes[i];
+  }
+
+  var index = 10;
+
+  for (var root = 0; root < faLargeSuffixes.length; root++) {
+    for (var prefix = 0; prefix < faPrefixes.length; prefix++) {
+      if (index >= formatLong.length) return;
+
+      formatLong[index] =
+        ' ' + faPrefixes[prefix] + faLargeSuffixes[root];
+
+      index++;
+    }
+  }
+})();
